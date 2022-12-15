@@ -9,10 +9,16 @@
 
     <!-- Base application theme. -->
     <!-- This theme will be set for all activities after initializing -->
-    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorOnPrimary">@color/design_default_color_on_primary</item>
+        <item name="toolbarStyle">@style/A3Toolbar</item>
+    </style>
+
+    <style name="A3Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">#FFF</item>
     </style>
 </resources>

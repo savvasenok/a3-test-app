@@ -9,7 +9,6 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:7.2.2")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Kotlin}")
-        // classpath("at.allaboutapps.gradle:plugin:3.0.11") // TODO
         classpath("com.google.android.gms:oss-licenses-plugin:0.10.5")
         classpath(Dependencies.AndroidXNavigationSafeArgs)
 

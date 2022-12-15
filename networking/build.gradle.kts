@@ -19,8 +19,6 @@ dependencies {
     implementation(Dependencies.Moshi)
     kapt(Dependencies.MoshiCodegen)
 
-    implementation(Dependencies.RxJava3)
-
     implementation(Dependencies.KotlinStdLib)
 }
 

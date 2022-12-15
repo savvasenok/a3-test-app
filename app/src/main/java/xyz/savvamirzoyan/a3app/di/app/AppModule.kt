@@ -5,17 +5,18 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import at.allaboutapps.retrofit.converter.unwrap.UnwrapConverterFactory
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
 import xyz.savvamirzoyan.a3app.BuildConfig
 import xyz.savvamirzoyan.a3app.di.viewmodel.ViewModelModule
 import xyz.savvamirzoyan.a3app.networking.UserAgentInterceptor
@@ -30,6 +31,9 @@ import javax.inject.Singleton
     ],
 )
 class AppModule {
+
+    private val json = Json { ignoreUnknownKeys = true }
+    private val contentType = "application/json".toMediaType()
 
     @Module
     interface Bindings {
@@ -68,8 +72,7 @@ class AppModule {
             .baseUrl(BuildConfig.SERVER_API_URL)
             .client(okHttp)
             .addConverterFactory(UnwrapConverterFactory())
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .addConverterFactory(json.asConverterFactory(contentType))
             .build()
             .create(ApiService::class.java)
     }

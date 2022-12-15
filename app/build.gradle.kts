@@ -7,6 +7,8 @@ plugins {
     `kotlin-kapt`
     id("androidx.navigation.safeargs.kotlin")
     `kotlin-parcelize`
+
+    id("org.jetbrains.kotlin.plugin.serialization") version ("1.6.10")
 }
 
 android {
@@ -120,12 +122,11 @@ dependencies {
     // logging
     implementation(Dependencies.Timber)
 
-    implementation(Dependencies.RxJava3)
-    implementation(Dependencies.RxKotlin3)
-
     // networking
-    implementation(Dependencies.RetrofitAdapterRxJava3)
-    implementation(Dependencies.RetrofitConverterMoshi)
+    implementation(Dependencies.Retrofit)
+    implementation(Dependencies.RetrofitSerialization)
+    implementation(Dependencies.SerializationJson)
+    implementation(Dependencies.RetrofitMock)
 
     implementation(Dependencies.OkHttpLoggingInterceptor)
     implementation(Dependencies.Moshi)
